@@ -1,4 +1,4 @@
-package com.mmall.concurrency.atomic;
+package com.mmall.concurrency.example.atomic;
 
 import com.mmall.concurrency.annoations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
@@ -8,18 +8,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Slf4j
 @ThreadSafe
-public class AtomicExample2 {
+public class AtomicExample1 {
     //请求总数
     private static int clientTotal = 5000;
 
     //同时并发执行的线程数
     private static int threadTotal = 200;
 
-    private static AtomicLong count = new AtomicLong(0);
+    private static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) throws Exception{
         ExecutorService executorService = Executors.newCachedThreadPool();
