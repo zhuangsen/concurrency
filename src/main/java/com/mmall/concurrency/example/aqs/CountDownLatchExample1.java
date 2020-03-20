@@ -9,14 +9,14 @@ import java.util.concurrent.Executors;
 @Slf4j
 public class CountDownLatchExample1 {
 
-    private final static int threadCount = 200;
+    private final static int threadCount = 4;
 
     public static void main(String[] args) throws Exception{
         ExecutorService executorService = Executors.newCachedThreadPool();
 
-        final CountDownLatch countDownLatch = new CountDownLatch(threadCount);
+        final CountDownLatch countDownLatch = new CountDownLatch(2);
 
-        for (int i = 0; i < threadCount; i++) {
+        for (int i = 1; i <= threadCount; i++) {
             final int threadNum = i;
             executorService.execute(()->{
                 try {
@@ -24,6 +24,7 @@ public class CountDownLatchExample1 {
                 } catch (Exception e){
                     log.error("exception", e);
                 } finally {
+                    System.out.println("~~~");
                     countDownLatch.countDown();
                 }
             });
